@@ -20,7 +20,7 @@ void merge(int* a, int l, int r, int mid) {
     }
 }
 
-int merge_sort(int* a, int l, int r) {
+int merge_sort(int *a, int l, int r) {
     if (l + 2 < r) {
         int mid = l + (r - l) / 2;
         merge_sort(a, l, mid);
