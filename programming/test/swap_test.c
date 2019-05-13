@@ -1,7 +1,7 @@
 #include <check.h>
-#include <helper/swap.h>
+#include <common/swap.h>
 
-START_TEST (SwapTrival) {
+START_TEST (swap_trival) {
     int a = 3;
     int b = 2;
     swap(&a, &b, sizeof(a));
@@ -9,7 +9,7 @@ START_TEST (SwapTrival) {
     ck_assert_int_eq(b, 3);
 } END_TEST
 
-START_TEST (SwapManyTimes) {
+START_TEST (swap_many_times) {
     int times = 10000;
     for (int i = 0; i < times; i++) {
         int a = 3;
@@ -20,23 +20,24 @@ START_TEST (SwapManyTimes) {
     }
 } END_TEST
 
-Suite* SwapSuite() {
+Suite* swap_suite() {
     Suite *suite;
-    TCase *testCase;
+    TCase *test_case;
 
     suite = suite_create("Swap");
-    testCase = tcase_create("Trival");
-    tcase_add_test(testCase, SwapTrival);
-    tcase_add_test(testCase, SwapManyTimes);
-    suite_add_tcase(suite, testCase);
+    test_case = tcase_create("Case0");
+    tcase_add_test(test_case, swap_trival);
+    tcase_add_test(test_case, swap_many_times);
+    suite_add_tcase(suite, test_case);
 
     return suite;
 }
 
-int main(void) {
+int main() {
+
     int failedCount = 0;                   
-    Suite* swapSuite = SwapSuite();                            
-    SRunner *runner = srunner_create(swapSuite);                     
+    Suite* suite = swap_suite();                            
+    SRunner *runner = srunner_create(suite);                     
 
     srunner_run_all(runner, CK_NORMAL);  
     failedCount = srunner_ntests_failed(runner); 
