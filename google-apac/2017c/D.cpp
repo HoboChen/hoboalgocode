@@ -4,9 +4,6 @@ using namespace std;
 
 const int maxn = 10000;
 
-#define pr(x) cout << #x << " = " << x << " % ";
-#define pn cout << endl;
-
 bool vis[maxn];
 
 inline bool HasCommon(const vector<int> & x, const vector<int> & y) {

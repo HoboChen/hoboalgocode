@@ -5,7 +5,7 @@
 #define max_e 10000
 
 typedef struct edge_struct {
-    int u, v, w;
+    int u, v, w; // u -> v, length = w
 }edge;
 
 int p[max_v];
@@ -31,11 +31,13 @@ void add_edge(int u, int v, int w) {
     cnt++;
 }
 
-int edge_cnt(edge* x, edge* y) {
-    if (x -> w == y -> w) {
+int edge_cnt(const void* x, const void* y) {
+    edge* a = (edge*)x;
+    edge* b = (edge*)y;
+    if (a -> w == b -> w) {
         return 0;
     } 
-    if (x -> w > y -> w) {
+    if (a -> w > b -> w) {
         return 1;
     }
     return -1;
