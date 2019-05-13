@@ -7,11 +7,12 @@
 #include <assert.h>
 #include <string.h>
 #include <time.h>
+#include <stdio.h>
 
 START_TEST (kmp_trival) {
-    const char* p = "abcdabcd";
+    const char* p = "abcdabd";
     int* f = compute_prefix_function(p);
-    int length = strlen(p)
+    int length = strlen(p);
     for (int i = 0; i < length; i++) {
         printf("%d ", f[i]);
     }
